@@ -21,7 +21,7 @@ RUN wget https://repo.powerdns.com/FD380FBB-pub.asc && \
     rm FD380FBB-pub.asc
 
 RUN apt-get update && \
-    apt-get -y install pdns-server pdns-backend-gmysql mysql-client
+    apt-get -y install pdns-server pdns-backend-mysql mysql-client
 
 RUN echo "launch=gmysql" >> /etc/powerdns/pdns.conf && \
     echo "gmysql-host = $SQL_HOST" >> /etc/powerdns/pdns.conf && \
