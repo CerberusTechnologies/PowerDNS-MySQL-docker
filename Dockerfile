@@ -31,8 +31,8 @@ RUN echo "launch=gmysql" >> /etc/powerdns/pdns.conf && \
     echo "gmysql-password = $SQL_USER" >> /etc/powerdns/pdns.conf && \
     echo "gmysql-dnssec = $SQL_DNSSEC" >> /etc/powerdns/pdns.conf
 	
-COPY check_db.sh /tmp
-COPY schema.sql /tmp
+COPY check_db.sh /tmp/
+COPY schema.sql /tmp/
 	
 RUN chmod +x /tmp/check_db.sh
 RUN /tmp/check_db.sh $SQL_HOST $SQL_PORT $SQL_USER $SQL_PASS $SQL_DB
