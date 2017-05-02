@@ -6,7 +6,7 @@ USER=$3
 PASSWORD=$4
 DATABASE=$5
 
-RESULT=`mysql -u $USER -p$PASSWORD --skip-column-names -e "SHOW DATABASES LIKE '$DATABASE'"`
+RESULT=`mysql -h $HOST -P $PORT -u $USER -p$PASSWORD --skip-column-names -e "SHOW DATABASES LIKE '$DATABASE'"`
 if [ "$RESULT" == "$DATABASE" ]; then
     echo "Database already exists";
 else
