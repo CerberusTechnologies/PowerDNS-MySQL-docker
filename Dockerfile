@@ -1,12 +1,12 @@
 FROM debian:jessie
 MAINTAINER Derek Vance <dvance@cerb-tech.com>
 
-ENV SQL_HOST   = localhost
-ENV SQL_PORT   = 3306
-ENV SQL_DB     = pdns
-ENV SQL_USER   = root
-ENV SQL_PASS   = changeme
-ENV SQL_DNSSEC = no
+ENV SQL_HOST=localhost
+ENV SQL_PORT=3306
+ENV SQL_DB=pdns
+ENV SQL_USER=root
+ENV SQL_PASS=changeme
+ENV SQL_DNSSEC=no
 
 RUN apt-get update && apt-get -y install wget
 
