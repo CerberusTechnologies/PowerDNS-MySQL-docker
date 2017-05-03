@@ -26,12 +26,12 @@ RUN apt-get update && \
 
 RUN rm /etc/powerdns/pdns.d/* && \
     echo "launch=gmysql" >> /etc/powerdns/pdns.conf && \
-    echo "gmysql-host = $SQL_HOST" >> /etc/powerdns/pdns.conf && \
-	echo "gmysql-port = $SQL_PORT" >> /etc/powerdns/pdns.conf && \
-    echo "gmysql-dbname = $SQL_DB" >> /etc/powerdns/pdns.conf && \
-    echo "gmysql-user = $SQL_USER" >> /etc/powerdns/pdns.conf && \
-    echo "gmysql-password = $SQL_USER" >> /etc/powerdns/pdns.conf && \
-    echo "gmysql-dnssec = $SQL_DNSSEC" >> /etc/powerdns/pdns.conf
+    echo "gmysql-host=$SQL_HOST" >> /etc/powerdns/pdns.conf && \
+	echo "gmysql-port=$SQL_PORT" >> /etc/powerdns/pdns.conf && \
+    echo "gmysql-dbname=$SQL_DB" >> /etc/powerdns/pdns.conf && \
+    echo "gmysql-user=$SQL_USER" >> /etc/powerdns/pdns.conf && \
+    echo "gmysql-password=$SQL_USER" >> /etc/powerdns/pdns.conf && \
+    echo "gmysql-dnssec=$SQL_DNSSEC" >> /etc/powerdns/pdns.conf
 	
 COPY check_db.sh /tmp/
 COPY schema.sql /tmp/
