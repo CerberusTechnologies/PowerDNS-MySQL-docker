@@ -8,7 +8,7 @@ ENV SQL_USER=root
 ENV SQL_PASS=changeme
 ENV SQL_DNSSEC=no
 
-ENV SQL_EXIST=`mysql -h $HOST -P $PORT -u $USER -p$PASSWORD --skip-column-names -e "SHOW DATABASES LIKE '$DATABASE'"`
+RUN env SQL_EXIST=`mysql -h $HOST -P $PORT -u $USER -p$PASSWORD --skip-column-names -e "SHOW DATABASES LIKE '$DATABASE'"`
 
 RUN echo $SQL_EXIST
 
