@@ -39,7 +39,7 @@ RUN which mysql
 RUN cat /etc/mysql/my.cnf
 
 RUN chmod +x /tmp/check_db.sh
-RUN /tmp/check_db.sh $SQL_HOST $SQL_PORT $SQL_USER $SQL_PASS $SQL_DB
+RUN /tmp/check_db.sh
 
 EXPOSE 53/tcp 53/udp 53000/tcp 8081/tcp
 
