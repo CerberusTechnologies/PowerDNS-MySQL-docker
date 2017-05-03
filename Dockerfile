@@ -8,6 +8,10 @@ ENV SQL_USER=root
 ENV SQL_PASS=changeme
 ENV SQL_DNSSEC=no
 
+ENV SQL_EXIST=`mysql -h $HOST -P $PORT -u $USER -p$PASSWORD --skip-column-names -e "SHOW DATABASES LIKE '$DATABASE'"`
+
+RUN echo $SQL_EXIST
+
 RUN apt-get update && apt-get -y install wget
 
 RUN echo "deb http://repo.powerdns.com/debian jessie-auth-40 main" > /etc/apt/sources.list.d/pdns.list
