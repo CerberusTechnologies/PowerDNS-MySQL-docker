@@ -41,7 +41,7 @@ RUN /tmp/check_db.sh $SQL_HOST $SQL_PORT $SQL_USER $SQL_PASS $SQL_DB
 		
 RUN cat /etc/powerdns/pdns.conf
 RUN ls /etc/powerdns
-RUN ld /etc/powerdns/pdns.d
+RUN ls /etc/powerdns/pdns.d
 	
 
 EXPOSE 53/tcp 53/udp 53000/tcp 8081/tcp
