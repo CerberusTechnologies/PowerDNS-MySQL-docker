@@ -30,7 +30,7 @@ RUN rm /etc/powerdns/pdns.d/* && \
     echo "gmysql-port=$SQL_PORT" >> /etc/powerdns/pdns.conf && \
     echo "gmysql-dbname=$SQL_DB" >> /etc/powerdns/pdns.conf && \
     echo "gmysql-user=$SQL_USER" >> /etc/powerdns/pdns.conf && \
-    echo "gmysql-password=$SQL_USER" >> /etc/powerdns/pdns.conf && \
+    echo "gmysql-password=$SQL_PASS" >> /etc/powerdns/pdns.conf && \
     echo "gmysql-dnssec=$SQL_DNSSEC" >> /etc/powerdns/pdns.conf
 	
 COPY check_db.sh /tmp/
