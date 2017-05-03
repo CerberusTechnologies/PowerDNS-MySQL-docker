@@ -36,6 +36,7 @@ COPY check_db.sh /tmp/
 COPY schema.sql /tmp/
 
 RUN which mysql
+RUN cat /etc/mysql/my.cnf
 
 RUN chmod +x /tmp/check_db.sh
 RUN /tmp/check_db.sh $SQL_HOST $SQL_PORT $SQL_USER $SQL_PASS $SQL_DB
