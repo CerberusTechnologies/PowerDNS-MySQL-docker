@@ -38,7 +38,9 @@ COPY schema.sql /tmp/
 
 RUN chmod +x /tmp/check_db.sh
 RUN /tmp/check_db.sh $SQL_HOST $SQL_PORT $SQL_USER $SQL_PASS $SQL_DB
-		
+	
+RUN cat /etc/powerdns/pdns.conf
+	
 
 EXPOSE 53/tcp 53/udp 53000/tcp 8081/tcp
 
