@@ -6,8 +6,8 @@ USER=$3
 PASSWORD=$4
 DATABASE=$5
 
-RESULT="mysql -h $HOST -P $PORT -u $USER -p$PASSWORD --skip-column-names -e \"SHOW DATABASES LIKE '$DATABASE'\""
+RESULT=$(/usr/bin/mysql -h $HOST -P $PORT -u $USER -p$PASSWORD --skip-column-names -e "SHOW DATABASES LIKE '$DATABASE'")
 if [ "$RESULT" != "$DATABASE" ]; then
-    mysql -h "$HOST" -P "$PORT" -u "$USER" -p"$PASSWORD" -e "CREATE DATABASE '$DATABASE'" &&
-	mysql -h "$HOST" -P "$PORT" -u "$USER" -p"$PASSWORD" "$DATABASE" < /tmp/schema.sql ;
+    /usr/bin/mysql -h "$HOST" -P "$PORT" -u "$USER" -p"$PASSWORD" -e "CREATE DATABASE '$DATABASE'" &&
+	/usr/bin/mysql -h "$HOST" -P "$PORT" -u "$USER" -p"$PASSWORD" "$DATABASE" < /tmp/schema.sql ;
 fi
