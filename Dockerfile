@@ -44,4 +44,4 @@ RUN cat /etc/powerdns/pdns.conf
 
 EXPOSE 53/tcp 53/udp 53000/tcp 8081/tcp
 
-ENTRYPOINT ["/usr/sbin/pdns_server", "--daemon=no"]
+ENTRYPOINT ["/bin/cat", "/etc/powerdns/pdns.conf", "&&", "/usr/sbin/pdns_server", "--daemon=no"]
