@@ -39,8 +39,7 @@ RUN rm /etc/powerdns/pdns.d/* && \
 COPY check_db.sh /tmp/
 COPY schema.sql /tmp/
 
-RUN which mysql
-RUN cat /etc/mysql/my.cnf
+RUN rm /etc/mysql/my.cnf
 
 RUN chmod +x /tmp/check_db.sh
 RUN /tmp/check_db.sh
