@@ -35,14 +35,11 @@ RUN rm /etc/powerdns/pdns.d/* && \
     echo "gmysql-user=$SQL_USER" >> /etc/powerdns/pdns.d/gmysql.conf && \
     echo "gmysql-password=$SQL_PASS" >> /etc/powerdns/pdns.d/gmysql.conf && \
     echo "gmysql-dnssec=$SQL_DNSSEC" >> /etc/powerdns/pdns.d/gmysql.conf
-	
-COPY check_db.sh /tmp/
+
 COPY schema.sql /tmp/
 
 RUN rm /etc/mysql/my.cnf
 
-RUN chmod +x /tmp/check_db.sh
-RUN /tmp/check_db.sh
 
 EXPOSE 53/tcp 53/udp 53000/tcp 8081/tcp
 
