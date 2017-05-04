@@ -5,7 +5,6 @@ MAINTAINER Derek Vance <dvance@cerb-tech.com>
 RUN apt-get update && apt-get -y install wget software-properties-common
 
 RUN add-apt-repository 'deb http://repo.powerdns.com/debian jessie-auth-40 main'
-RUN add-apt-repository 'deb http://mariadb.biz.net.id//repo/10.1/debian jessie main'
 
 RUN echo "Package: pdns-*" >> /etc/apt/preferences.d/pdns && \
     echo "Pin: origin repo.powerdns.com" >> /etc/apt/preferences.d/pdns && \
@@ -14,11 +13,9 @@ RUN echo "Package: pdns-*" >> /etc/apt/preferences.d/pdns && \
 RUN wget https://repo.powerdns.com/FD380FBB-pub.asc && \
     apt-key add FD380FBB-pub.asc && \
     rm FD380FBB-pub.asc
-	
-RUN apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
 
 RUN apt-get update && \
-    apt-get -y install pdns-server pdns-backend-mysql mariadb-client && \
+    apt-get -y install pdns-server pdns-backend-mysql && \
 	rm -rf /var/lib/apt/lists/*
 
 RUN rm /etc/powerdns/pdns.d/* && \
@@ -29,12 +26,6 @@ RUN rm /etc/powerdns/pdns.d/* && \
     echo "gmysql-user=$SQL_USER" >> /etc/powerdns/pdns.d/gmysql.conf && \
     echo "gmysql-password=$SQL_PASS" >> /etc/powerdns/pdns.d/gmysql.conf && \
     echo "gmysql-dnssec=$SQL_DNSSEC" >> /etc/powerdns/pdns.d/gmysql.conf
-	
-COPY check_db.sh /tmp/
-COPY schema.sql /tmp/
-
-RUN chmod +x /tmp/check_db.sh
-RUN /tmp/check_db.sh
 
 EXPOSE 53/tcp 53/udp 53000/tcp 8081/tcp
 
